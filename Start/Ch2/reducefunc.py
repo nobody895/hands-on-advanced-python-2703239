@@ -2,6 +2,7 @@
 # Using the reduce function
 
 import json
+from functools import reduce
 
 
 # open the sample weather data file and use the json module to load and parse it
@@ -9,7 +10,8 @@ with open("../../sample-weather-history.json", "r") as weatherfile:
     weatherdata = json.load(weatherfile)
 
 # TODO: how much snowfall is in the entire dataset?
-
+total_snowfall = reduce(lambda acc, elem: acc + elem['snow'], weatherdata, 0)
+print(total_snowfall)
 
 # TODO: how much total precipitation is in the entire dataset?
 
